@@ -28,6 +28,12 @@ jobs:
         uses: actions/checkout@v3
       - name: 'Run az commands'
         run: |
-          cd terraform-aks-azure
+          cd container-registry
           teraform init
-          pw
+          teraform plan
+          teraform apply -auto-approve
+          cd ../aks-cluster
+          teraform init
+          teraform plan
+          teraform apply -auto-approve
+          
