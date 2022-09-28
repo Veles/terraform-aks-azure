@@ -13,8 +13,7 @@ jobs:
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.azure }}
-          environment: 'AZURESTACK'
+          creds: ${{ secrets.AZURESTACK }}
   
       - name: 'Run az commands'
         run: |
