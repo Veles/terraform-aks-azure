@@ -21,20 +21,20 @@ jobs:
         with:
           creds: ${{ secrets.AZURESTACK }}
       - name: Terraform fmt
-        working-directory: ./terraform-aks-azure
+        working-directory: ./container-registry
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
       - name: Terraform Init
-        working-directory: ./terraform-aks-azure
+        working-directory: ./container-registry
         id: init
         run: terraform init
       - name: Terraform Validate
-        working-directory: ./terraform-aks-azure
+        working-directory: ./container-registry
         id: validate
         run: terraform validate -no-color
       - name: Terraform Plan
-        working-directory: ./terraform-aks-azure
+        working-directory: ./container-registry
         id: plan
         run: terraform plan -no-color
         continue-on-error: true
