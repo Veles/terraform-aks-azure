@@ -53,11 +53,10 @@ resource "azurerm_kubernetes_cluster" "kube" {
     network_policy = "azure"
 
   }
-  service_principal {
-    client_id     = var.kubernetes_client_id
-    client_secret = var.kubernetes_client_secret
-  }
 
+  identity {
+    type = "SystemAssigned"
+  }
   tags = {
     Environment = var.environment
   }
