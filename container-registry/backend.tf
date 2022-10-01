@@ -1,10 +1,10 @@
 terraform {
-  /*   backend "azurerm" {
+     backend "azurerm" {
     resource_group_name   = "dev-storages"
-    storage_account_name  = "tfstatesfordev"
+    storage_account_name  = "tfstate5037"
     container_name        = "tfstates"
-    key                   = "acr-dev.terraform.tfstate"
-  } */
+    key                   = "+LEFNQfbeQEZJ1qaioBXcwZRRgjWlP6ieF345z3o+C0KA5cOk178WP7BoqvQtWk7ru1zW7XWElUL+ASt+tG6LQ=="
+  } 
   required_providers {
     azurerm = {
       version = "= 3.25.0"

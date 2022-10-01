@@ -1,6 +1,6 @@
 # File: .github/workflows/OIDC_workflow.yml
 
-name: deploy
+name: destroy
 on: [workflow_dispatch]
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
