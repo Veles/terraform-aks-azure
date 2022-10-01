@@ -3,7 +3,7 @@ terraform {
     resource_group_name   = "dev-storages"
     storage_account_name  = "tfstate5037"
     container_name        = "tfstates"
-    key                   = "+LEFNQfbeQEZJ1qaioBXcwZRRgjWlP6ieF345z3o+C0KA5cOk178WP7BoqvQtWk7ru1zW7XWElUL+ASt+tG6LQ=="
+    key                   = "8cWw+/iTYfl/HybOqb2m4D+gTIMMiCLiP3cftEUIApJV90pq2znsFnczqRHNIXDJ5d53CzmqXhsP+AStI3QVYQ=="
   }
   required_providers {
     azurerm = {
