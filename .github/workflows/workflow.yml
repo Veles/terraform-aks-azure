@@ -15,8 +15,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
       - uses: azure/login@v1
         with:
-          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
-
+           creds: ${{ secrets.AZURESTACK }}
       - name: Terraform fmt
         working-directory: ./container-registry
         id: fmt
@@ -31,6 +30,8 @@ jobs:
         id: validate
         run: terraform validate -no-color
       - name: Terraform Plan
+        with:
+           creds: ${{ secrets.AZURESTACK }}
         working-directory: ./container-registry
         id: plan
         run: terraform plan -out=plan.out

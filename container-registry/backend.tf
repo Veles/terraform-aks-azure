@@ -17,7 +17,15 @@ terraform {
   }
 }
 
+variable "client_secret" {
+  type = string
+  sensitive = true
+}
+# Configure the Microsoft Azure Provider
 provider "azurerm" {
-  features {
-  }
+  features {}
+  subscription_id = "<subscription id>"
+  tenant_id       = "<tenant id>"
+  client_id       = "<app id>"
+  client_secret   = var.client_secret
 }
