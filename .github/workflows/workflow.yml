@@ -35,7 +35,6 @@ jobs:
           client_secret: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
           subscrubtion_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_AD_TENANT_ID }}
-          
         working-directory: ./container-registry
         id: validate
         run: terraform validate -no-color
