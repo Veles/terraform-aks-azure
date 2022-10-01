@@ -42,7 +42,7 @@ jobs:
         working-directory: ./container-registry
         id: plan
         run: terraform plan -out=plan.out
-        continue-on-error: true
+        continue-on-error: false
       - name: Terraform Apply
         working-directory: ./container-registry
         id: apply
