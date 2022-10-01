@@ -9,6 +9,8 @@ permissions:
 jobs:
   build-and-deploy:
     environment: azure
+    with:
+      creds: ${{ secrets.AZURESTACK }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -30,11 +32,9 @@ jobs:
         id: validate
         run: terraform validate -no-color
       - name: Terraform Plan
-        with:
-           creds: ${{ secrets.AZURESTACK }}
-        working-directory: ./container-registry
         id: plan
         run: terraform plan -out=plan.out
+        working-directory: ./container-registry
         continue-on-error: false
       - name: Terraform Apply
         working-directory: ./container-registry
