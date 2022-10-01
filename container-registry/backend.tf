@@ -37,3 +37,20 @@ provider "azurerm" {
   tenant_id       = "176af66e-3d60-4d7b-8af4-550dc1364cd7"
   client_id       = "67af739c-2635-4265-9822-aeb7d847dfbd"
 }
+
+terraform {
+  required_providers {
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.0.0"
+    }
+  }
+}
+provider "kubernetes" {
+  config_path = var.kube_config
+}
+resource "kubernetes_namespace" "test" {
+  metadata {
+    name = "nginx"
+  }
+}
