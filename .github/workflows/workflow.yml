@@ -15,7 +15,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
       - uses: azure/login@v1
         with:
-          credentials: ${{ secrets.AZURESTACK }}
+          creds: ${{ secrets.AZURESTACK }}
 
       - name: Terraform fmt
         working-directory: ./container-registry
