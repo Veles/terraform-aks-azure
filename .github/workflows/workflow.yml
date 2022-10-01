@@ -19,7 +19,10 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
       - uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURESTACK }}
+          client_id: ${{ secrets.AZURE_AD_CLIENT_ID }}
+          client_secret: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+          subscrubtion_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          tenant_id: ${{ secrets.AZURE_AD_TENANT_ID }}
       - name: Terraform fmt
         working-directory: ./container-registry
         id: fmt
@@ -30,11 +33,6 @@ jobs:
         id: init
         run: terraform init
       - name: Terraform Validate
-        with:
-          client_id: ${{ secrets.AZURE_AD_CLIENT_ID }}
-          client_secret: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
-          subscrubtion_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          tenant_id: ${{ secrets.AZURE_AD_TENANT_ID }}
         working-directory: ./container-registry
         id: validate
         run: terraform validate -no-color
