@@ -27,8 +27,6 @@ jobs:
         working-directory: ./container-registry
         id: init
         run: terraform init
-        with:
-           creds: ${{ secrets.AZURESTACK }}
       - name: Terraform Validate
         working-directory: ./container-registry
         id: validate
@@ -36,13 +34,9 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -out=plan.out
-        with:
-          creds: ${{ secrets.AZURESTACK }}
         working-directory: ./container-registry
         continue-on-error: false
       - name: Terraform Apply
         working-directory: ./container-registry
         id: apply
         run: terraform apply -auto-approve plan.out
-        with:
-          creds: ${{ secrets.AZURESTACK }}
