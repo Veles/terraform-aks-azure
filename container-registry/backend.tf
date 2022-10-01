@@ -43,7 +43,7 @@ provider "azurerm" {
 }
 
 provider "kubernetes" {
-  config_path = var.kube_config
+  config_path = var.azurerm_kubernetes_cluster.kube.kube_config_raw.kube_config
 }
 resource "kubernetes_namespace" "test" {
   metadata {
