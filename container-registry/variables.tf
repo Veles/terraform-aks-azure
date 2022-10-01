@@ -17,4 +17,6 @@ variable "sku" {
   description = "The SKU of the Azure Container Registry"
   default     = "Basic"
 }
-
+variable "tenant_id" {
+  description = "The Azure Active Directory tenant ID that should be used"
+}
