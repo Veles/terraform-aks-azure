@@ -14,6 +14,10 @@ terraform {
       version = "2.29.0"
       source  = "hashicorp/azuread"
     }
+     kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.0.0"
+    }
   }
 }
 
@@ -38,14 +42,6 @@ provider "azurerm" {
   client_id       = "67af739c-2635-4265-9822-aeb7d847dfbd"
 }
 
-terraform {
-  required_providers {
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = ">= 2.0.0"
-    }
-  }
-}
 provider "kubernetes" {
   config_path = var.kube_config
 }
