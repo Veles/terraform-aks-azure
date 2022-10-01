@@ -38,4 +38,4 @@ jobs:
       - name: Terraform Apply
         working-directory: ./container-registry
         id: apply
-        run: terraform apply -auto-approve plan.out
+        run: terraform apply -auto-approve plan.out -var  client_secret=$ARM_CLIENT_SECRET
