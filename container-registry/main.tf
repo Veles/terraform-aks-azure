@@ -3,6 +3,8 @@ resource "azurerm_resource_group" "rg" {
   name     = var.rgname
   location = var.location
 }
+variable  "tenant_id"  = env.ARM_TENANT_ID
+}
 
 resource "azurerm_container_registry" "acr" {
   name                = var.registryname
