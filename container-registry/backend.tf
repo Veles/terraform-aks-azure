@@ -1,9 +1,9 @@
 terraform {
-     backend "azurerm" {
-    resource_group_name   = "tfstate"
-    storage_account_name  = "tfstate5037"
-    container_name        = "tfstate"
-    key                   = "8cWw+/iTYfl/HybOqb2m4D+gTIMMiCLiP3cftEUIApJV90pq2znsFnczqRHNIXDJ5d53CzmqXhsP+AStI3QVYQ=="
+  backend "azurerm" {
+    resource_group_name  = "tfstate"
+    storage_account_name = "tfstate5037"
+    container_name       = "tfstate"
+    key                  = "8cWw+/iTYfl/HybOqb2m4D+gTIMMiCLiP3cftEUIApJV90pq2znsFnczqRHNIXDJ5d53CzmqXhsP+AStI3QVYQ=="
   }
   required_providers {
     azurerm = {
@@ -18,16 +18,16 @@ terraform {
 }
 
 variable "client_secret" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "subscription_id" {
-  type = string
+  type      = string
   sensitive = true
 }
 variable "client_id" {
-  type = string
+  type      = string
   sensitive = true
 }
 # Configure the Microsoft Azure Provider
