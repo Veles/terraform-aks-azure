@@ -1,6 +1,6 @@
 # File: .github/workflows/OIDC_workflow.yml
 
-name: Run Azure Login with OIDC
+name: plan-apply
 on: [push]
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -11,7 +11,7 @@ permissions:
       id-token: write
       contents: read
 jobs:
-  build-and-deploy:
+  plan-and-apply:
     environment: azure2
     runs-on: ubuntu-latest
     steps:
