@@ -13,16 +13,30 @@ resource "azurerm_container_registry" "acr" {
   admin_enabled       = true
 }
 
-resource "azuread_application" "appname" {
-  display_name = var.rgname
+resource "azurerm_kubernetes_cluster" "kube" {
+  name                = "example-kube"
+  location            = azurerm_resource_group.kube.location
+  resource_group_name = azurerm_resource_group.kube.name
+  dns_prefix          = "exampleaks1"
+
+  default_node_pool {
+    name       = "default"
+    node_count = 1
+    vm_size    = "Standard_D2_v2"
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    Environment = "Production"
+  }
 }
 
-resource "azuread_service_principal" "appname" {
-  application_id = azuread_application.appname.application_id
-}
-
-resource "azurerm_role_assignment" "appname" {
-  role_definition_name = "Reader"
-  scope                = azurerm_container_registry.acr.id
-  principal_id         = azuread_service_principal.appname.id
+resource "azurerm_role_assignment" "kube" {
+  principal_id                     = azurerm_kubernetes_cluster.kune.kubelet_identity[0].object_id
+  role_definition_name             = "AcrPull"
+  scope                            = azurerm_container_registry.acr.id
+  skip_service_principal_aad_check = true
 }
