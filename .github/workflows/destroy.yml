@@ -1,0 +1,41 @@
+# File: .github/workflows/OIDC_workflow.yml
+
+name: Run Azure Login with OIDC
+on: [workflow_dispatch]
+env:
+  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+permissions:
+      id-token: write
+      contents: read
+jobs:
+  build-and-deploy:
+    environment: azure2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+      - name: Terraform fmt
+        working-directory: ./container-registry
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+      - name: Terraform Init
+        working-directory: ./container-registry
+        id: init
+        run: terraform init
+      - name: Terraform Validate
+        working-directory: ./container-registry
+        id: validate
+        run: terraform validate -no-color
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -out=plan.out -var  client_secret=$ARM_CLIENT_SECRET -var tenant_id=$ARM_TENANT_ID -var client_id=$ARM_CLIENT_ID -var subscription_id=$ARM_SUBSCRIPTION_ID
+        working-directory: ./container-registry
+        continue-on-error: false
+      - name: Terraform Apply
+        working-directory: ./container-registry
+        id: apply
+        run: terraform apply -auto-approve  -var  client_secret=$ARM_CLIENT_SECRET -var tenant_id=$ARM_TENANT_ID -var client_id=$ARM_CLIENT_ID -var subscription_id=$ARM_SUBSCRIPTION_ID
