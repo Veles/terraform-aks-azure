@@ -24,8 +24,7 @@ variable "client_secret" {
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = "<subscription id>"
-  tenant_id       = "<tenant id>"
-  client_id       = "<app id>"
-  client_secret   = var.client_secret
+  subscription_id = "723f9d92-2b27-4228-9238-abac464e81cd"
+  tenant_id       = "176af66e-3d60-4d7b-8af4-550dc1364cd7"
+  client_id       = "67af739c-2635-4265-9822-aeb7d847dfbd"
 }
