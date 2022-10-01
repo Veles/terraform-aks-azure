@@ -20,8 +20,6 @@ jobs:
         working-directory: ./container-registry
         id: fmt
         run: terraform fmt -check
-        with:
-           creds: ${{ secrets.AZURESTACK }}
         continue-on-error: true
       - name: Terraform Init
         working-directory: ./container-registry
@@ -37,7 +35,7 @@ jobs:
         id: plan
         run: terraform plan -out=plan.out
         with:
-           creds: ${{ secrets.AZURESTACK }}
+          creds: ${{ secrets.AZURESTACK }}
         working-directory: ./container-registry
         continue-on-error: false
       - name: Terraform Apply
@@ -45,4 +43,4 @@ jobs:
         id: apply
         run: terraform apply -auto-approve plan.out
         with:
-           creds: ${{ secrets.AZURESTACK }}
+          creds: ${{ secrets.AZURESTACK }}
