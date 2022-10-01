@@ -20,5 +20,5 @@ variable "sku" {
 
 variable "tenant_id" {
   description = "Tenant ID for Azure AD"
-  default = ${env.ARM_TENANT_ID}
+  default = env.ARM_TENANT_ID
 }
