@@ -13,7 +13,7 @@ variable "registryname" {
   default     = "acrdevtest88registry"
 }
 
-variable "sku" {
+variable "sku_registry" {
   description = "The SKU of the Azure Container Registry"
   default     = "Basic"
 }
@@ -21,22 +21,13 @@ variable "tenant_id" {
   description = "The Azure Active Directory tenant ID that should be used"
 }
 
-variable "kubernetes_client_id" {
-  description = "The Client ID for the Service Principal to use for this Managed Kubernetes Cluster"
-}
 
-variable "kubernetes_client_secret" {
-  description = "The Client Secret for the Service Principal to use for this Managed Kubernetes Cluster"
-}
 
 
 variable "prefix" {
   description = "A prefix used for all resources"
 }
 
-variable "location" {
-  description = "The Azure Region in which all resources should be provisioned"
-}
 
 variable "kubernetes_client_id" {
   description = "The Client ID for the Service Principal to use for this Managed Kubernetes Cluster"
