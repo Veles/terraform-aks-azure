@@ -1,21 +1,15 @@
 # ACR creation based on https://www.terraform.io/docs/providers/azurerm/r/container_registry.html
 data "azurerm_client_config" "current" {}
-resource "azurerm_resource_group" "rg" {
-  name     = var.rgname
-  location = var.location
-}
-
-resource "azurerm_container_registry" "acr" {
-  name                = var.registryname
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-  sku                 = var.sku_registry
-  admin_enabled       = true
-}
-
 resource "azurerm_resource_group" "kube" {
   name     = "${var.prefix}-k8s-resources"
   location = var.location
+}
+resource "azurerm_container_registry" "kube" {
+  name                = var.registryname
+  resource_group_name = azurerm_resource_group.kube.name
+  location            = azurerm_resource_group.kube.location
+  sku                 = var.sku_registry
+  admin_enabled       = true
 }
 
 resource "azurerm_virtual_network" "appvnet" {
