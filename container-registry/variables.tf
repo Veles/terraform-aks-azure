@@ -26,7 +26,7 @@ variable "tenant_id" {
 
 variable "prefix" {
   description = "A prefix used for all resources"
-  default = "dev"
+  default     = "dev"
 }
 
 variable "sku" {

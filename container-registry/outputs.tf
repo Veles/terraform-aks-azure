@@ -32,11 +32,11 @@ output "client_certificate" {
 }
 
 output "cluster_ca_certificate" {
-  value = azurerm_kubernetes_cluster.kube.kube_config.0.cluster_ca_certificate
-   sensitive = true
+  value     = azurerm_kubernetes_cluster.kube.kube_config.0.cluster_ca_certificate
+  sensitive = true
 }
 
 output "host" {
-  value = azurerm_kubernetes_cluster.kube.kube_config.0.host
-   sensitive = true
+  value     = azurerm_kubernetes_cluster.kube.kube_config.0.host
+  sensitive = true
 }
