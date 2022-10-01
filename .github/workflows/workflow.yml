@@ -9,8 +9,6 @@ permissions:
 jobs:
   build-and-deploy:
     environment: azure
-    with:
-      creds: ${{ secrets.AZURESTACK }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,11 +20,15 @@ jobs:
         working-directory: ./container-registry
         id: fmt
         run: terraform fmt -check
+        with:
+           creds: ${{ secrets.AZURESTACK }}
         continue-on-error: true
       - name: Terraform Init
         working-directory: ./container-registry
         id: init
         run: terraform init
+        with:
+           creds: ${{ secrets.AZURESTACK }}
       - name: Terraform Validate
         working-directory: ./container-registry
         id: validate
@@ -34,9 +36,13 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -out=plan.out
+        with:
+           creds: ${{ secrets.AZURESTACK }}
         working-directory: ./container-registry
         continue-on-error: false
       - name: Terraform Apply
         working-directory: ./container-registry
         id: apply
         run: terraform apply -auto-approve plan.out
+        with:
+           creds: ${{ secrets.AZURESTACK }}
