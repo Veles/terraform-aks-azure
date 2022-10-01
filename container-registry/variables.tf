@@ -18,9 +18,3 @@ variable "sku" {
   default     = "Basic"
 }
 
-variable "subscription_id" {
-  description = "SUBSCRIPTION ID for Azure AD"
-}
-variable "tenant_id" {
-  description = "Tenant ID for Azure AD"
-}
