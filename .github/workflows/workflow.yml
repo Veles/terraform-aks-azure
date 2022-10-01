@@ -16,6 +16,7 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURESTACK }}
+          enable-AzPSSession: true
 
       - name: Terraform fmt
         working-directory: ./container-registry
