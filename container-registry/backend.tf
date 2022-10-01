@@ -21,6 +21,14 @@ variable "client_secret" {
   type = string
   sensitive = true
 }
+variable "tenant_id" {
+  type = string
+  sensitive = true
+}
+variable "subscription_id" {
+  type = string
+  sensitive = true
+}
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
